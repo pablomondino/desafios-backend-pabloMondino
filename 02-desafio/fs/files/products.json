@@ -1,0 +1,65 @@
+[
+  {
+    "id": "b5f83e05912066c38dd18b8f",
+    "title": "silla",
+    "photo": "foto de silla",
+    "email": 30000,
+    "stock": 45
+  },
+  {
+    "id": "49dcc2cb63cd3ee50a69493b",
+    "title": "silla",
+    "photo": "foto de silla",
+    "email": 30000,
+    "stock": 45
+  },
+  {
+    "id": "bbfd4cfbb90c69023b57e56e",
+    "title": "mesa",
+    "photo": "foto de silla",
+    "email": 30000,
+    "stock": 45
+  },
+  {
+    "id": "14edb8b11f273ab5cb15d35c",
+    "title": "mesa",
+    "photo": "foto de silla",
+    "email": 30000,
+    "stock": 45
+  },
+  {
+    "id": "81f4c2071f63bf14d1cd9a1c",
+    "title": "mesa",
+    "photo": "foto de silla",
+    "email": 30000,
+    "stock": 45
+  },
+  {
+    "id": "97a3124c51df00faa977c116",
+    "title": "mesa",
+    "photo": "foto de silla",
+    "email": 30000,
+    "stock": 45
+  },
+  {
+    "id": "c22679612da7e5faefc10ab8",
+    "title": "mesa",
+    "photo": "foto de silla",
+    "email": 30000,
+    "stock": 45
+  },
+  {
+    "id": "c66907b9b08fa102d1fec88a",
+    "title": "mesa",
+    "photo": "foto de silla",
+    "email": 30000,
+    "stock": 45
+  },
+  {
+    "id": "22de88269fb7da744d0a4774",
+    "title": "mesa",
+    "photo": "foto de silla",
+    "email": 30000,
+    "stock": 45
+  }
+]
