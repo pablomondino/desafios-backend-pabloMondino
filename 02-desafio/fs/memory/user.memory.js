@@ -1,3 +1,5 @@
+const crypto = require("crypto");
+
 class UserManager {
   static #users = [];
 
@@ -9,10 +11,13 @@ class UserManager {
         throw new Error("no existe el nombre, la foto o el email");
       } else {
         const user = {
-          id:
+          /* id:
             UserManager.#users.length === 0
               ? 1
               : UserManager.#users[UserManager.#users.length - 1].id + 1,
+          */
+          id: crypto.randomBytes(12).toString("hex"),
+
           name: data.name,
           photo: data.photo,
           email: data.email,
@@ -39,11 +44,11 @@ class UserManager {
 
   readOne(id) {
     try {
-      const oneUser = UserManager.#users.find((each) => each.id === Number(id));
+      const oneUser = UserManager.#users.find((each) => each.id === id);
       if (oneUser) {
         return oneUser;
       } else {
-        throw ("NO HAY USUARIO CON EL ID " + id);
+        throw new Error("NO HAY USUARIO CON EL ID " + id);
       }
     } catch (error) {
       error.message;
@@ -84,15 +89,16 @@ console.log("viendo variable user despues de cargar segundo usuario");
 users = user.read();
 console.log(users);
 
-
 const user3 = user.createUser({
   name: "alejo mondino",
   photo: "alejo.jpg",
   email: "john@example.com",
 });
-const user4 = user.createUser({ name: "victoria",
-photo: "pablo.jpg",
- email: "viki@example.com" });
+const user4 = user.createUser({
+  name: "victoria",
+  photo: "pablo.jpg",
+  email: "viki@example.com",
+});
 
 // Leer y mostrar usuarios
 console.log(user1, user2, user3, user4);

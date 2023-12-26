@@ -1,3 +1,5 @@
+const crypto = require("crypto");
+
 class ProductManager {
   static #products = [];
 
@@ -10,11 +12,15 @@ class ProductManager {
         throw new Error("no existe el titulo, la foto, el prcio o stock");
       } else {
         const product = {
+          id: crypto.randomBytes(12).toString("hex"),
+
+          /*
           id:
             ProductManager.#products.length === 0
               ? 1
               : ProductManager.#products[ProductManager.#products.length - 1]
-                  .id + 1,
+                  .id + 1,*/
+
           name: data.title,
           photo: data.photo,
           email: data.price,
@@ -28,20 +34,18 @@ class ProductManager {
     }
   }
 
-   
-    read() {
-      try {
-        if (ProductManager.#products===0) {
-          throw Error("no hay productos")
-        }else{
-          return ProductManager.#products
-        }
-      } catch (error) {
-        return error.message
+  read() {
+    try {
+      if (ProductManager.#products === 0) {
+        throw Error("no hay productos");
+      } else {
+        return ProductManager.#products;
       }
-    
+    } catch (error) {
+      return error.message;
     }
-  
+  }
+
   /*
     readOne(id) {
       try {
@@ -56,20 +60,21 @@ class ProductManager {
       }
       
     }*/
-    readOne(id) {
-      try {
-        const oneProduct = ProductManager.#products.find((each) => each.id === Number(id));
-        if (oneProduct) {
-          return oneProduct;
-        } else {
-          throw ("NO HAY productos CON EL ID " + id);
-        }
-      } catch (error) {
-        error.message;
+  readOne(id) {
+    try {
+      const oneProduct = ProductManager.#products.find(
+        (each) => each.id === Number(id)
+      );
+      if (oneProduct) {
+        return oneProduct;
+      } else {
+        throw "NO HAY productos CON EL ID " + id;
       }
+    } catch (error) {
+      error.message;
     }
   }
-
+}
 
 // Crear una instancia de la clase ProductManager
 const productManager = new ProductManager();
@@ -107,15 +112,11 @@ const producto4 = productManager.createProduct({
 
 console.log(producto1, producto2, producto3, producto4);
 
+// devolver el arreglo con todos los productos
+console.log("arreglo con todos los productos");
+console.log(productManager.read());
 
+// Leer y mostrar un producto específico por id
+console.log(" Leer y mostrar un producto específico por id=3");
 
-
-  // devolver el arreglo con todos los productos
-  console.log("arreglo con todos los productos");
-  console.log(productManager.read());
-  
-  // Leer y mostrar un producto específico por id
-  console.log(" Leer y mostrar un producto específico por id=3");
-
-  console.log(productManager.readOne(3));
- 
+console.log(productManager.readOne(3));
