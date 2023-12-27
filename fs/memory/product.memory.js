@@ -1,3 +1,5 @@
+const crypto = require("crypto");
+
 class ProductManager {
   static #products = [];
 
@@ -10,11 +12,15 @@ class ProductManager {
         throw new Error("no existe el titulo, la foto, el prcio o stock");
       } else {
         const product = {
+          id: crypto.randomBytes(12).toString("hex"),
+
+          /*
           id:
             ProductManager.#products.length === 0
               ? 1
               : ProductManager.#products[ProductManager.#products.length - 1]
-                  .id + 1,
+                  .id + 1,*/
+
           name: data.title,
           photo: data.photo,
           email: data.price,
@@ -68,6 +74,41 @@ class ProductManager {
         error.message;
       }
     }
+    //agregamos este método
+
+
+    //*********************************
+    //desafio 3///
+    //******************************
+    destroy(id) {
+      try {
+        const one = ProductManager.#products.find((each) => each.id === id);
+        if (one) {
+          ProductManager.#products = ProductManager.#products.filter(
+            (each) => each.id !== one.id
+          );
+          //esto no va mas porque no tengo que guardar archivo, tengo que usar la memoria
+          // y la memoria esta en esa variable #products
+
+          /*
+          await fs.promises.writeFile(
+            this.path,
+            JSON.stringify(ProductManager.#products, null, 2)
+          );
+          */
+          console.log("borramos//destroy Id : " + id);
+          return one;
+        } else {
+          throw new Error("there is no product");
+        }
+      } catch (error) {
+        console.log(error.message);
+        return error.message;
+      }
+    }
+
+
+
   }
 
 
@@ -118,4 +159,7 @@ console.log(producto1, producto2, producto3, producto4);
   console.log(" Leer y mostrar un producto específico por id=3");
 
   console.log(productManager.readOne(3));
- 
+
+ //detroy esto es para desafio 3
+  console.log(productManager.destroy(1));
+  console.log(productManager.destroy(10));
